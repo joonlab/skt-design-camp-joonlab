@@ -1,0 +1,180 @@
+<html data-theme="light" lang="ko" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>데이터 상태 5가지 체크포인트</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .text-teal-custom { color: #46818E; }
+        .bg-teal-custom { background-color: #46818E; }
+        .text-orange-custom { color: #EB5A11; }
+        .bg-orange-custom { background-color: #EB5A11; }
+        .text-purple-custom { color: #8E7CC3; }
+        .bg-purple-custom { background-color: #8E7CC3; }
+        .border-teal-custom { border-color: #46818E; }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -5px rgba(70, 129, 142, 0.15);
+        }
+
+        .icon-circle {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover .icon-circle {
+            transform: scale(1.1);
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style></head>
+<body class="relative" style="">
+<div class="relative w-full h-full flex flex-col p-12 box-border">
+<!-- Logo Watermark -->
+<div class="absolute top-6 right-10 z-20">
+<img alt="Logo" class="h-14 w-auto opacity-80" src="https://page.gensparksite.com/slides_images/a3cb0105676f7953f01b66cd6b7a1712.png" data-height-listener-added="true">
+</div>
+<!-- Background Elements -->
+<div class="absolute top-20 left-10 w-32 h-32 bg-teal-50 rounded-full blur-2xl -z-10"><br></div>
+<!-- Header -->
+<div class="mb-8 z-10">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-1 bg-orange-custom"></div>
+<span class="text-orange-custom font-bold tracking-widest text-sm uppercase">DATA CHECKLIST</span>
+</div>
+<h2 class="text-5xl font-black text-teal-custom">데이터 상태 5가지 체크포인트</h2>
+<p class="text-gray-500 mt-3 text-lg font-medium">AI에게 학습시키기 전, 반드시 확인해야 할 5가지 질문</p>
+</div>
+<!-- Main Grid Content -->
+<div class="flex-1 flex flex-col gap-6 z-10 pb-4 justify-center">
+<!-- Top Row: 3 Cards -->
+<div class="grid grid-cols-3 gap-6">
+<!-- Point 1: Accessibility -->
+<div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm card-hover flex flex-col relative overflow-hidden group h-full">
+<div class="absolute top-0 right-0 w-20 h-20 bg-teal-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center text-teal-custom text-2xl mb-4 icon-circle relative z-10">
+<i class="fa-solid fa-server"></i>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-teal-custom text-white text-xs font-bold px-2 py-0.5 rounded-full">1</span>
+<h3 class="text-xl font-bold text-gray-800">어디에? (접근성)</h3>
+</div>
+<p class="text-gray-600 text-sm leading-relaxed flex-1">
+                        데이터가 어디에 저장되어 있나요?<br>
+<span class="text-teal-custom font-bold">개인 PC</span>, <span class="text-teal-custom font-bold">사내 서버</span>, 클라우드 등 데이터의 위치를 파악하고 접근 권한을 확인해야 합니다.
+                    </p>
+</div>
+<!-- Point 2: Format -->
+<div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm card-hover flex flex-col relative overflow-hidden group h-full">
+<div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-custom text-2xl mb-4 icon-circle relative z-10">
+<i class="fa-solid fa-file-lines"></i>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-purple-custom text-white text-xs font-bold px-2 py-0.5 rounded-full">2</span>
+<h3 class="text-xl font-bold text-gray-800">어떤 형태로? (형식)</h3>
+</div>
+<p class="text-gray-600 text-sm leading-relaxed flex-1">
+                        AI가 바로 읽을 수 있는 파일인가요?<br>
+                        엑셀, CSV, 텍스트 파일이 가장 좋으며, <span class="text-purple-custom font-bold">이미지나 PDF</span>라면 변환 과정이 필요할 수 있습니다.
+                    </p>
+</div>
+<!-- Point 3: Structure -->
+<div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm card-hover flex flex-col relative overflow-hidden group h-full">
+<div class="absolute top-0 right-0 w-20 h-20 bg-orange-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center text-orange-custom text-2xl mb-4 icon-circle relative z-10">
+<i class="fa-solid fa-table-list"></i>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-orange-custom text-white text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+<h3 class="text-xl font-bold text-gray-800">얼마나 정리되어? (구조화)</h3>
+</div>
+<p class="text-gray-600 text-sm leading-relaxed flex-1">
+                        일관된 형식을 갖추고 있나요?<br>
+                        컬럼명이 통일되어 있는지, 빈 칸(결측치)이나 중복된 내용은 없는지 <span class="text-orange-custom font-bold">데이터의 정리 상태</span>를 점검합니다.
+                    </p>
+</div>
+</div>
+<!-- Bottom Row: 2 Cards (Wider) -->
+<div class="grid grid-cols-2 gap-6">
+<!-- Point 4: Quality -->
+<div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm card-hover flex items-center gap-6 relative overflow-hidden group">
+<div class="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center text-gray-600 text-4xl shadow-sm icon-circle flex-shrink-0 z-10">
+<i class="fa-solid fa-medal"></i>
+</div>
+<div class="z-10 flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-gray-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">4</span>
+<h3 class="text-xl font-bold text-gray-800">믿을 수 있게? (품질)</h3>
+</div>
+<p class="text-gray-600 text-sm leading-relaxed">
+                            정확하고 최신 데이터인가요?<br>
+                            과거의 잘못된 정보가 섞여있다면 AI도 잘못된 답을 내놓습니다. <span class="font-bold text-gray-800">데이터의 신뢰도</span>가 결과물의 품질을 결정합니다.
+                        </p>
+</div>
+</div>
+<!-- Point 5: Sensitivity -->
+<div class="bg-gradient-to-br from-red-50 to-white rounded-2xl border border-red-100 p-6 shadow-sm card-hover flex items-center gap-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-red-400 to-orange-400"></div>
+<div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-red-500 text-4xl shadow-md border border-red-100 icon-circle flex-shrink-0 z-10">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+<div class="z-10 flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">5</span>
+<h3 class="text-xl font-bold text-gray-800">써도 되는지? (민감도)</h3>
+</div>
+<p class="text-gray-600 text-sm leading-relaxed">
+                            개인정보나 기밀이 포함되어 있나요?<br>
+                            AI 서비스에 업로드하기 전, 반드시 <span class="font-bold text-red-500">보안 규정</span>을 확인하고 민감한 정보는 <span class="font-bold text-red-500">마스킹</span> 처리해야 합니다.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script></body></html>

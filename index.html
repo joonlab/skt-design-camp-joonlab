@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKT Design Camp — AI와 협업하기 위한 업무 구조화와 데이터 준비</title>
+<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/SK_Telecom_Logo.svg/500px-SK_Telecom_Logo.svg.png" type="image/png">
+<style>
+  :root {
+    --skt-red: #E4002B;
+    --dark-gray: #333333;
+    --light-gray: #F5F5F5;
+    --bg-deep: #0f0f23;
+    --bg-sidebar: #1a1a2e;
+    --sidebar-width: 260px;
+    --slide-w: 1280;
+    --slide-h: 720;
+    --fade-speed: 0.5s;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+  }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-deep);
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* ── Loading Spinner ── */
+  .loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.4s ease;
+  }
+  .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+  .spinner {
+    width: 48px; height: 48px;
+    border: 4px solid rgba(255,255,255,0.15);
+    border-top-color: var(--skt-red);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Main Layout ── */
+  .container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: var(--sidebar-width);
+    background: var(--bg-sidebar);
+    border-right: 1px solid rgba(255,255,255,0.08);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(0);
+    transition: transform 0.3s ease, opacity var(--fade-speed) ease;
+    overflow: hidden;
+  }
+  .sidebar.collapsed { transform: translateX(calc(-1 * var(--sidebar-width))); }
+  .sidebar.idle-hidden { opacity: 0; pointer-events: none; }
+
+  .sidebar-header {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+  .sidebar-header img {
+    height: 22px;
+    filter: brightness(0) invert(1);
+  }
+  .sidebar-header span {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .thumb-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.15) transparent;
+  }
+  .thumb-list::-webkit-scrollbar { width: 4px; }
+  .thumb-list::-webkit-scrollbar-track { background: transparent; }
+  .thumb-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+  .thumb-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 4px;
+    border: 2px solid transparent;
+  }
+  .thumb-item:hover { background: rgba(255,255,255,0.06); }
+  .thumb-item.active {
+    background: rgba(228, 0, 43, 0.1);
+    border-color: var(--skt-red);
+  }
+
+  .thumb-preview {
+    width: 96px;
+    height: 54px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #000;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .thumb-preview iframe {
+    width: 1280px;
+    height: 720px;
+    transform: scale(0.075);
+    transform-origin: 0 0;
+    border: none;
+    pointer-events: none;
+  }
+
+  .thumb-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .thumb-num {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .thumb-title {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+  }
+
+  /* ── Toggle Button ── */
+  .toggle-btn {
+    position: fixed;
+    left: 12px;
+    top: 12px;
+    z-index: 200;
+    width: 40px;
+    height: 40px;
+    background: rgba(26, 26, 46, 0.9);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--fade-speed) ease, background 0.2s;
+    backdrop-filter: blur(8px);
+  }
+  .toggle-btn:hover { background: rgba(228, 0, 43, 0.3); }
+  .toggle-btn.idle-hidden { opacity: 0; pointer-events: none; }
+  .toggle-btn svg { width: 20px; height: 20px; }
+
+  .sidebar:not(.collapsed) ~ .toggle-btn { left: calc(var(--sidebar-width) + 12px); }
+
+  /* ── Fullscreen Button ── */
+  .fullscreen-btn {
+    position: fixed;
+    right: 12px;
+    top: 12px;
+    z-index: 200;
+    width: 40px;
+    height: 40px;
+    background: rgba(26, 26, 46, 0.9);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--fade-speed) ease, background 0.2s;
+    backdrop-filter: blur(8px);
+  }
+  .fullscreen-btn:hover { background: rgba(228, 0, 43, 0.3); }
+  .fullscreen-btn.idle-hidden { opacity: 0; pointer-events: none; }
+  .fullscreen-btn svg { width: 18px; height: 18px; }
+
+  /* ── Slide Area ── */
+  .slide-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+  }
+  .sidebar:not(.collapsed) ~ .slide-area { margin-left: var(--sidebar-width); }
+
+  .slide-container {
+    position: relative;
+    width: calc(var(--slide-w) * 1px);
+    height: calc(var(--slide-h) * 1px);
+    transform-origin: center center;
+  }
+
+  .slide-frame {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .slide-frame.active { opacity: 1; pointer-events: auto; }
+  .slide-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+  }
+
+  /* ── Click Zones ── */
+  .click-zone {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 10;
+  }
+  .click-zone-left {
+    left: 0;
+    width: 35%;
+    cursor: w-resize;
+  }
+  .click-zone-right {
+    right: 0;
+    width: 35%;
+    cursor: e-resize;
+  }
+  .click-zone-center {
+    left: 35%;
+    width: 30%;
+    cursor: default;
+  }
+
+  /* ── Page Indicator ── */
+  .page-indicator {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26, 26, 46, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    z-index: 200;
+    transition: opacity var(--fade-speed) ease;
+    letter-spacing: 1px;
+  }
+  .page-indicator .current { color: #fff; font-weight: 700; }
+  .page-indicator.idle-hidden { opacity: 0; pointer-events: none; }
+
+  /* ── SKT Logo (top right, behind fullscreen btn) ── */
+  .skt-logo {
+    position: fixed;
+    right: 60px;
+    top: 16px;
+    z-index: 150;
+    height: 24px;
+    opacity: 0.5;
+    transition: opacity var(--fade-speed) ease;
+    filter: brightness(0) invert(1);
+  }
+  .skt-logo.idle-hidden { opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<!-- Loading -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/SK_Telecom_Logo.svg/500px-SK_Telecom_Logo.svg.png" alt="SKT">
+    <span>DESIGN CAMP</span>
+  </div>
+  <div class="thumb-list" id="thumbList"></div>
+</div>
+
+<!-- Toggle Button -->
+<button class="toggle-btn" id="toggleBtn" title="사이드바 토글">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+</button>
+
+<!-- Fullscreen Button -->
+<button class="fullscreen-btn" id="fullscreenBtn" title="전체화면 (F)">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 3 21 3 21 9"/>
+    <polyline points="9 21 3 21 3 15"/>
+    <line x1="21" y1="3" x2="14" y2="10"/>
+    <line x1="3" y1="21" x2="10" y2="14"/>
+  </svg>
+</button>
+
+<!-- SKT Logo -->
+<img class="skt-logo" id="sktLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/SK_Telecom_Logo.svg/500px-SK_Telecom_Logo.svg.png" alt="SKT">
+
+<!-- Slide Area -->
+<div class="slide-area" id="slideArea">
+  <div class="slide-container" id="slideContainer">
+    <!-- Click zones -->
+    <div class="click-zone click-zone-left" id="zoneLeft"></div>
+    <div class="click-zone click-zone-center"></div>
+    <div class="click-zone click-zone-right" id="zoneRight"></div>
+    <!-- Slide frames injected by JS -->
+  </div>
+</div>
+
+<!-- Page Indicator -->
+<div class="page-indicator" id="pageIndicator">
+  <span class="current" id="pageCurrent">1</span> / <span id="pageTotal">20</span>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ── Slide Data ──
+  const slides = [
+    {num: 1, file: "slide_01.html", title: "표지"},
+    {num: 2, file: "slide_02.html", title: "오늘의 강의 구조"},
+    {num: 3, file: "slide_03.html", title: "왜 구조화가 필요한가"},
+    {num: 4, file: "slide_04.html", title: "기술적 근거: LLM & Context Window"},
+    {num: 5, file: "slide_05.html", title: "Agent & Tool Use 구조"},
+    {num: 6, file: "slide_06.html", title: "오늘의 목표 & Ground Rule"},
+    {num: 7, file: "slide_07.html", title: "업무 구조화 4단계 프레임"},
+    {num: 8, file: "slide_08.html", title: "AI vs 사람 역할 분담"},
+    {num: 9, file: "slide_09.html", title: "모호한 지시 → 엉뚱한 결과"},
+    {num: 10, file: "slide_10.html", title: "Task 쪼개기 실전 방법"},
+    {num: 11, file: "slide_11.html", title: "잘 쪼갠 vs 못 쪼갠 비교"},
+    {num: 12, file: "slide_12.html", title: "실제 업무 예시"},
+    {num: 13, file: "slide_13.html", title: "AI 적용 지점 분석"},
+    {num: 14, file: "slide_14.html", title: "AI Ready, 데이터 점검"},
+    {num: 15, file: "slide_15.html", title: "AI는 데이터로 일한다"},
+    {num: 16, file: "slide_16.html", title: "데이터 5가지 체크포인트"},
+    {num: 17, file: "slide_17.html", title: "AI 구현 접근 방식 한눈에 보기"},
+    {num: 18, file: "slide_18.html", title: "각 접근 방식 상세 가이드"},
+    {num: 19, file: "slide_19.html", title: "업무별 선택 플로우차트"},
+    {num: 20, file: "slide_20.html", title: "오늘의 핵심 메시지"}
+  ];
+
+  // ── State ──
+  let currentSlide = 0;
+  let sidebarOpen = true;
+  let idleTimer = null;
+  let isIdle = false;
+  const IDLE_TIMEOUT = 3000;
+
+  // ── DOM ──
+  const sidebar = document.getElementById('sidebar');
+  const thumbList = document.getElementById('thumbList');
+  const toggleBtn = document.getElementById('toggleBtn');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  const slideContainer = document.getElementById('slideContainer');
+  const slideArea = document.getElementById('slideArea');
+  const pageIndicator = document.getElementById('pageIndicator');
+  const pageCurrent = document.getElementById('pageCurrent');
+  const pageTotal = document.getElementById('pageTotal');
+  const loadingOverlay = document.getElementById('loadingOverlay');
+  const sktLogo = document.getElementById('sktLogo');
+  const zoneLeft = document.getElementById('zoneLeft');
+  const zoneRight = document.getElementById('zoneRight');
+
+  pageTotal.textContent = slides.length;
+
+  // ── Build Slide Frames ──
+  const frames = [];
+  slides.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'slide-frame' + (i === 0 ? ' active' : '');
+    const iframe = document.createElement('iframe');
+    iframe.src = s.file;
+    iframe.loading = i < 3 ? 'eager' : 'lazy';
+    iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups');
+    div.appendChild(iframe);
+    slideContainer.appendChild(div);
+    frames.push(div);
+  });
+
+  // ── Build Thumbnails ──
+  slides.forEach((s, i) => {
+    const item = document.createElement('div');
+    item.className = 'thumb-item' + (i === 0 ? ' active' : '');
+    item.innerHTML = `
+      <div class="thumb-preview">
+        <iframe src="${s.file}" loading="lazy" sandbox="allow-same-origin allow-scripts" tabindex="-1"></iframe>
+      </div>
+      <div class="thumb-info">
+        <div class="thumb-num">${String(s.num).padStart(2, '0')}</div>
+        <div class="thumb-title">${s.title}</div>
+      </div>
+    `;
+    item.addEventListener('click', () => goToSlide(i));
+    thumbList.appendChild(item);
+  });
+
+  // ── Navigation ──
+  function goToSlide(index) {
+    if (index < 0 || index >= slides.length || index === currentSlide) return;
+    frames[currentSlide].classList.remove('active');
+    frames[index].classList.add('active');
+
+    const thumbs = thumbList.querySelectorAll('.thumb-item');
+    thumbs[currentSlide].classList.remove('active');
+    thumbs[index].classList.add('active');
+
+    // Auto-scroll thumbnail into view
+    thumbs[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    currentSlide = index;
+    pageCurrent.textContent = currentSlide + 1;
+    resetIdle();
+  }
+
+  function nextSlide() { goToSlide(currentSlide + 1); }
+  function prevSlide() { goToSlide(currentSlide - 1); }
+
+  // ── Click Zones ──
+  zoneLeft.addEventListener('click', prevSlide);
+  zoneRight.addEventListener('click', nextSlide);
+
+  // ── Keyboard ──
+  document.addEventListener('keydown', (e) => {
+    resetIdle();
+    switch(e.key) {
+      case 'ArrowRight':
+      case 'PageDown':
+        e.preventDefault(); nextSlide(); break;
+      case 'ArrowLeft':
+      case 'PageUp':
+        e.preventDefault(); prevSlide(); break;
+      case 'Home':
+        e.preventDefault(); goToSlide(0); break;
+      case 'End':
+        e.preventDefault(); goToSlide(slides.length - 1); break;
+      case 'f':
+      case 'F':
+        if (!e.ctrlKey && !e.metaKey) { e.preventDefault(); toggleFullscreen(); }
+        break;
+      case 'F11':
+        e.preventDefault(); toggleFullscreen(); break;
+      case 'Escape':
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else if (sidebarOpen) {
+          toggleSidebar();
+        }
+        break;
+    }
+  });
+
+  // ── Sidebar Toggle ──
+  function toggleSidebar() {
+    sidebarOpen = !sidebarOpen;
+    sidebar.classList.toggle('collapsed', !sidebarOpen);
+    scaleSlides();
+  }
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleSidebar();
+    resetIdle();
+  });
+
+  // ── Fullscreen ──
+  function toggleFullscreen() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen().catch(() => {});
+    }
+  }
+  fullscreenBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleFullscreen();
+    resetIdle();
+  });
+
+  // ── Scale Slides to Fit ──
+  function scaleSlides() {
+    const sidebarW = sidebarOpen && !sidebar.classList.contains('collapsed') ? 260 : 0;
+    const areaW = window.innerWidth - sidebarW;
+    const areaH = window.innerHeight;
+    const padX = 40;
+    const padY = 40;
+    const scaleX = (areaW - padX) / 1280;
+    const scaleY = (areaH - padY) / 720;
+    const scale = Math.min(scaleX, scaleY, 1.5);
+    slideContainer.style.transform = `scale(${scale})`;
+    slideContainer.style.width = '1280px';
+    slideContainer.style.height = '720px';
+  }
+
+  window.addEventListener('resize', scaleSlides);
+  scaleSlides();
+
+  // ── Idle Detection ──
+  const idleElements = [toggleBtn, fullscreenBtn, pageIndicator, sktLogo];
+
+  function setIdle() {
+    isIdle = true;
+    document.body.style.cursor = 'none';
+    if (sidebarOpen) {
+      sidebar.classList.add('idle-hidden');
+    }
+    idleElements.forEach(el => el.classList.add('idle-hidden'));
+  }
+
+  function clearIdle() {
+    isIdle = false;
+    document.body.style.cursor = '';
+    sidebar.classList.remove('idle-hidden');
+    idleElements.forEach(el => el.classList.remove('idle-hidden'));
+  }
+
+  function resetIdle() {
+    if (isIdle) clearIdle();
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(setIdle, IDLE_TIMEOUT);
+  }
+
+  document.addEventListener('mousemove', resetIdle);
+  document.addEventListener('click', resetIdle);
+  document.addEventListener('touchstart', resetIdle);
+  resetIdle();
+
+  // ── Loading ──
+  let loadedCount = 0;
+  const mainIframes = slideContainer.querySelectorAll('iframe');
+  const firstThree = Array.from(mainIframes).slice(0, 3);
+  const target = firstThree.length;
+
+  function checkLoaded() {
+    loadedCount++;
+    if (loadedCount >= target) {
+      loadingOverlay.classList.add('hidden');
+      setTimeout(() => { loadingOverlay.style.display = 'none'; }, 500);
+    }
+  }
+
+  firstThree.forEach(iframe => {
+    iframe.addEventListener('load', checkLoaded);
+  });
+
+  // Fallback: hide loader after 4s max
+  setTimeout(() => {
+    loadingOverlay.classList.add('hidden');
+    setTimeout(() => { loadingOverlay.style.display = 'none'; }, 500);
+  }, 4000);
+
+})();
+</script>
+</body>
+</html>

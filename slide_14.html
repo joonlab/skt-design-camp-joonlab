@@ -1,0 +1,140 @@
+<html data-theme="light" lang="ko" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .text-teal-custom { color: #46818E; }
+        .bg-teal-custom { background-color: #46818E; }
+        .text-orange-custom { color: #EB5A11; }
+        .bg-orange-custom { background-color: #EB5A11; }
+        .text-purple-custom { color: #8E7CC3; }
+        .bg-purple-custom { background-color: #8E7CC3; }
+
+        /* Custom Shadow for cards */
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style></head>
+<body class="relative" style="">
+<div class="relative w-full h-full flex flex-col items-center justify-center overflow-hidden">
+<!-- Logo Watermark -->
+<div class="absolute top-6 right-10 z-20">
+<img alt="Logo" class="h-16 w-auto opacity-100" src="https://page.gensparksite.com/slides_images/a3cb0105676f7953f01b66cd6b7a1712.png" data-height-listener-added="true">
+</div>
+<!-- Background Elements -->
+<div class="absolute top-0 right-0 w-2/3 h-full bg-teal-50 -z-10 opacity-30 transform skew-x-12 origin-top-right"><br></div>
+<!-- Main Content -->
+<div class="flex flex-col items-center justify-center z-10 w-full max-w-4xl text-center space-y-10">
+<!-- Section Indicator -->
+<div class="flex items-center gap-3 justify-center mb-2">
+<div class="w-16 h-1 bg-orange-custom"></div>
+<p class="text-orange-custom font-bold tracking-widest text-lg uppercase">SECTION 02</p>
+<div class="w-16 h-1 bg-orange-custom"></div>
+</div>
+<!-- Main Icon -->
+<div class="relative">
+<div class="w-40 h-40 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-teal-50 relative z-10">
+<i class="fa-solid fa-database text-7xl text-teal-custom"></i>
+</div>
+<!-- Decorative orbital dots -->
+<div class="absolute top-0 left-0 w-full h-full rounded-full border border-dashed border-teal-200 animate-spin-slow" style="transform: scale(1.4);"></div>
+<div class="absolute top-1/2 -right-10 w-10 h-10 bg-purple-custom rounded-full flex items-center justify-center text-white text-lg shadow-md">
+<i class="fa-solid fa-magnifying-glass"></i>
+</div>
+<div class="absolute bottom-0 -left-6 w-8 h-8 bg-orange-custom rounded-full flex items-center justify-center text-white text-xs shadow-md">
+<i class="fa-solid fa-check"></i>
+</div>
+</div>
+<!-- Title Group -->
+<div class="space-y-4">
+<p class="text-2xl text-gray-500 font-medium">Part 2</p>
+<h1 class="text-6xl font-black text-gray-800 leading-tight">
+                    AI Ready,<br>
+<span class="text-teal-custom relative inline-block">
+                        데이터 상태
+                        <svg class="absolute w-full h-3 -bottom-1 left-0 text-orange-200 opacity-60" preserveAspectRatio="none" viewBox="0 0 100 10">
+<path d="M0 5 Q 50 10 100 5" fill="none" stroke="currentColor" stroke-width="8"></path>
+</svg>
+</span> 점검하기
+                </h1>
+</div>
+<!-- Key Message Box -->
+<div class="bg-white px-10 py-6 rounded-2xl card-shadow border border-gray-100 max-w-2xl transform translate-y-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-custom text-xl flex-shrink-0">
+<i class="fa-solid fa-list-check"></i>
+</div>
+<p class="text-xl text-gray-600 font-medium text-left">
+                        "AI 도입 전에 <span class="text-orange-custom font-bold">'데이터가 준비되어 있는가?'</span>를<br>
+                        먼저 점검해야 합니다"
+                    </p>
+</div>
+</div>
+</div>
+<!-- Bottom Process Hint -->
+<div class="absolute bottom-12 w-full flex justify-center gap-16 opacity-40">
+<div class="flex flex-col items-center">
+<i class="fa-solid fa-folder-open text-gray-400 text-2xl mb-2"></i>
+<p class="text-sm font-bold text-gray-500">수집</p>
+</div>
+<div class="flex flex-col items-center">
+<i class="fa-solid fa-filter text-gray-400 text-2xl mb-2"></i>
+<p class="text-sm font-bold text-gray-500">정제</p>
+</div>
+<div class="flex flex-col items-center">
+<i class="fa-solid fa-file-circle-check text-gray-400 text-2xl mb-2"></i>
+<p class="text-sm font-bold text-gray-500">검증</p>
+</div>
+<div class="flex flex-col items-center">
+<i class="fa-solid fa-robot text-gray-400 text-2xl mb-2"></i>
+<p class="text-sm font-bold text-gray-500">활용</p>
+</div>
+</div>
+</div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script></body></html>

@@ -1,0 +1,185 @@
+<html data-theme="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .text-teal-custom { color: #46818E; }
+        .bg-teal-custom { background-color: #46818E; }
+        .text-orange-custom { color: #EB5A11; }
+        .bg-orange-custom { background-color: #EB5A11; }
+        .text-purple-custom { color: #8E7CC3; }
+        .bg-purple-custom { background-color: #8E7CC3; }
+        .border-teal-custom { border-color: #46818E; }
+        .border-orange-custom { border-color: #EB5A11; }
+
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+        }
+        .step-connector {
+            position: relative;
+        }
+        .step-connector::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid #46818E;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+        .step-connector:last-child::after {
+            display: none;
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style></head>
+<body class="relative">
+<div class="relative w-full h-full flex flex-col p-12 box-border">
+<!-- Logo Watermark -->
+<div class="absolute top-6 right-10 z-20">
+<img alt="Logo" class="h-16 w-auto opacity-80" src="https://page.gensparksite.com/slides_images/a3cb0105676f7953f01b66cd6b7a1712.png">
+</div>
+<!-- Background Elements -->
+<div class="absolute bottom-10 right-10 text-[180px] text-gray-50 font-black -z-10 select-none">AGENT</div>
+<div class="absolute top-0 left-0 w-1/4 h-full bg-teal-50 -z-10 opacity-30"></div>
+<!-- Header -->
+<div class="flex flex-col mb-6 z-10">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-1 bg-orange-custom"></div>
+<span class="text-orange-custom font-bold tracking-widest text-sm uppercase">AGENT ARCHITECTURE</span>
+</div>
+<h2 class="text-4xl font-black text-teal-custom">Agent 및 Tool Use 구조</h2>
+<p class="text-gray-500 text-base mt-1">최신 AI 시스템은 대부분 Agent 구조로 동작합니다</p>
+</div>
+<!-- 5-Step Horizontal Process -->
+<div class="z-10 mb-6">
+<div class="flex items-stretch gap-3 justify-center">
+<!-- Step 1: Goal -->
+<div class="flex-1 step-connector">
+<div class="bg-white rounded-2xl card-shadow border-2 border-teal-custom p-4 text-center h-full flex flex-col items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-teal-custom text-white flex items-center justify-center text-2xl mb-3">
+<i class="fa-solid fa-bullseye"></i>
+</div>
+<p class="text-sm font-black text-teal-custom uppercase tracking-wide">Goal</p>
+<p class="text-xs text-gray-600 mt-1">목표 설정</p>
+</div>
+</div>
+<!-- Step 2: Task Decomposition -->
+<div class="flex-1 step-connector">
+<div class="bg-white rounded-2xl card-shadow border-2 border-teal-custom p-4 text-center h-full flex flex-col items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-teal-custom text-white flex items-center justify-center text-2xl mb-3">
+<i class="fa-solid fa-diagram-project"></i>
+</div>
+<p class="text-sm font-black text-teal-custom uppercase tracking-wide">Decompose</p>
+<p class="text-xs text-gray-600 mt-1">작업 분해</p>
+</div>
+</div>
+<!-- Step 3: Tool Selection -->
+<div class="flex-1 step-connector">
+<div class="bg-white rounded-2xl card-shadow border-2 border-orange-custom p-4 text-center h-full flex flex-col items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-orange-custom text-white flex items-center justify-center text-2xl mb-3">
+<i class="fa-solid fa-toolbox"></i>
+</div>
+<p class="text-sm font-black text-orange-custom uppercase tracking-wide">Select Tool</p>
+<p class="text-xs text-gray-600 mt-1">도구 선택</p>
+</div>
+</div>
+<!-- Step 4: Execution -->
+<div class="flex-1 step-connector">
+<div class="bg-white rounded-2xl card-shadow border-2 border-orange-custom p-4 text-center h-full flex flex-col items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-orange-custom text-white flex items-center justify-center text-2xl mb-3">
+<i class="fa-solid fa-play"></i>
+</div>
+<p class="text-sm font-black text-orange-custom uppercase tracking-wide">Execute</p>
+<p class="text-xs text-gray-600 mt-1">실행</p>
+</div>
+</div>
+<!-- Step 5: Result Integration -->
+<div class="flex-1">
+<div class="bg-white rounded-2xl card-shadow border-2 border-purple-custom p-4 text-center h-full flex flex-col items-center justify-center" style="border-color: #8E7CC3;">
+<div class="w-14 h-14 rounded-full bg-purple-custom text-white flex items-center justify-center text-2xl mb-3">
+<i class="fa-solid fa-object-group"></i>
+</div>
+<p class="text-sm font-black text-purple-custom uppercase tracking-wide">Integrate</p>
+<p class="text-xs text-gray-600 mt-1">결과 통합</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Key Message Box -->
+<div class="z-10 mb-5">
+<div class="bg-gray-50 rounded-2xl border border-gray-200 p-6 relative">
+<div class="absolute -top-4 left-8">
+<span class="bg-teal-custom text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Key Insight</span>
+</div>
+<div class="flex items-start gap-4 mt-1">
+<div class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-custom flex-shrink-0 mt-0.5">
+<i class="fa-solid fa-lightbulb text-lg"></i>
+</div>
+<div>
+<p class="text-base text-gray-800 leading-relaxed">
+Agent는 업무 전체를 수행하는 것이 아닙니다. <span class="text-teal-custom font-bold">Task 단위 작업을 연결하고 조율(orchestration)하는 시스템</span>입니다.
+각 Task가 잘 정의되어야 Agent가 효과적으로 동작할 수 있습니다.
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Implication -->
+<div class="z-10 mt-auto">
+<div class="bg-teal-custom rounded-xl px-8 py-3 text-center flex items-center justify-center gap-3">
+<i class="fa-solid fa-arrow-right-to-bracket text-white text-lg"></i>
+<p class="text-white font-bold text-base">
+IMPLICATION: 업무를 Task 단위로 구조화하는 것은 AI 시스템 설계의 기본 원칙입니다
+</p>
+</div>
+</div>
+</div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script></body></html>

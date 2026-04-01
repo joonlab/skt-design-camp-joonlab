@@ -1,0 +1,198 @@
+<html data-theme="light" lang="ko" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>잘 쪼갠 vs 못 쪼갠 비교</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .text-teal-custom { color: #46818E; }
+        .bg-teal-custom { background-color: #46818E; }
+        .text-orange-custom { color: #EB5A11; }
+        .bg-orange-custom { background-color: #EB5A11; }
+        .text-purple-custom { color: #8E7CC3; }
+        .bg-purple-custom { background-color: #8E7CC3; }
+
+        .shadow-card { box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08); }
+
+        .table-row-hover:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+        .table-row-hover {
+            transition: all 0.2s ease;
+        }
+
+        /* Pattern Box Style */
+        .pattern-box {
+            background-color: #FFF7ED; /* Orange-50 */
+            border: 2px dashed #FDBA74; /* Orange-300 */
+        }
+
+        /* Text truncate for table cells if needed */
+        .truncate-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body class="relative bg-white" style="">
+<div class="w-full h-full flex flex-col p-12 box-border relative">
+<!-- Logo Watermark -->
+<div class="absolute top-6 right-10 z-20">
+<img alt="Logo" class="h-16 w-auto opacity-80" src="https://page.gensparksite.com/slides_images/a3cb0105676f7953f01b66cd6b7a1712.png">
+</div>
+<!-- Background Elements -->
+<div class="absolute top-0 left-0 w-full h-32 bg-gray-50 -z-10"></div>
+<div class="absolute bottom-[-100px] right-[-100px] w-80 h-80 bg-teal-50 rounded-full blur-3xl opacity-40 -z-10"></div>
+<!-- Header -->
+<div class="mb-6 z-10">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-1 bg-orange-custom"></div>
+<span class="text-orange-custom font-bold tracking-widest text-sm uppercase">COMPARISON</span>
+</div>
+<h2 class="text-5xl font-black text-teal-custom">잘 쪼갠 vs 못 쪼갠 비교</h2>
+<p class="text-gray-500 mt-2 text-lg font-medium">실무에서 바로 적용할 수 있는 <span class="text-gray-800 font-bold">Before/After 템플릿</span></p>
+</div>
+<!-- Main Content -->
+<div class="flex flex-col flex-1 z-10 gap-5">
+<!-- Comparison Table -->
+<div class="w-full flex-1 flex flex-col">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-6 py-3 bg-gray-100 rounded-t-xl text-sm font-bold text-gray-600 uppercase tracking-wider">
+<div class="col-span-2 text-center">업무 유형</div>
+<div class="col-span-3 text-center text-red-500"><i class="fa-solid fa-xmark mr-2"></i>못 쪼갠 지시 (Bad)</div>
+<div class="col-span-7 text-center text-teal-custom"><i class="fa-solid fa-check mr-2"></i>잘 쪼갠 지시 (Good)</div>
+</div>
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 bg-white border-b border-gray-200 p-4 items-center table-row-hover shadow-sm flex-1">
+<div class="col-span-2 flex flex-col items-center justify-center text-gray-600">
+<div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-xl mb-1">
+<i class="fa-regular fa-file-lines"></i>
+</div>
+<p class="text-xs font-bold">회의록 정리</p>
+</div>
+<div class="col-span-3 bg-red-50 rounded-lg p-4 flex items-center justify-center h-full">
+<p class="text-red-800 font-medium text-center text-sm">"회의록 정리해줘"</p>
+</div>
+<div class="col-span-7 bg-teal-50 rounded-lg p-3 h-full relative border border-teal-100 flex items-center">
+<div class="flex items-center gap-2 text-xs w-full justify-between">
+<div class="flex flex-col items-center gap-1 flex-1">
+<span class="font-bold text-teal-700 bg-white px-2 py-0.5 rounded border border-teal-200 shadow-sm">입력</span>
+<p class="text-center break-words leading-tight">녹취 텍스트</p>
+</div>
+<i class="fa-solid fa-arrow-right text-teal-300 mx-1"></i>
+<div class="flex flex-col items-center gap-1 flex-1">
+<span class="font-bold text-teal-700 bg-white px-2 py-0.5 rounded border border-teal-200 shadow-sm">처리</span>
+<p class="text-center break-words leading-tight">안건별 분류</p>
+</div>
+<i class="fa-solid fa-arrow-right text-teal-300 mx-1"></i>
+<div class="flex flex-col items-center gap-1 flex-1">
+<span class="font-bold text-teal-700 bg-white px-2 py-0.5 rounded border border-teal-200 shadow-sm">출력</span>
+<p class="text-center break-words leading-tight">핵심 결정사항<br>3줄 요약</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-4 bg-white border-b border-gray-200 p-4 items-center table-row-hover shadow-sm flex-1">
+<div class="col-span-2 flex flex-col items-center justify-center text-gray-600">
+<div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-xl mb-1">
+<i class="fa-solid fa-chart-pie"></i>
+</div>
+<p class="text-xs font-bold">교육 피드백</p>
+</div>
+<div class="col-span-3 bg-red-50 rounded-lg p-4 flex items-center justify-center h-full">
+<p class="text-red-800 font-medium text-center text-sm">"교육 피드백 분석해줘"</p>
+</div>
+<div class="col-span-7 bg-teal-50 rounded-lg p-3 h-full relative border border-teal-100 flex items-center">
+<div class="flex items-center gap-2 text-xs w-full justify-between">
+<div class="flex flex-col items-center gap-1 flex-1">
+<span class="font-bold text-teal-700 bg-white px-2 py-0.5 rounded border border-teal-200 shadow-sm">입력</span>
+<p class="text-center break-words leading-tight">설문 응답 CSV</p>
+</div>
+<i class="fa-solid fa-arrow-right text-teal-300 mx-1"></i>
+<div class="flex flex-col items-center gap-1 flex-1">
+<span class="font-bold text-teal-700 bg-white px-2 py-0.5 rounded border border-teal-200 shadow-sm">처리</span>
+<p class="text-center break-words leading-tight">항목별 평균 +<br>주관식 키워드 추출</p>
+</div>
+<i class="fa-solid fa-arrow-right text-teal-300 mx-1"></i>
+<div class="flex flex-col items-center gap-1 flex-1">
+<span class="font-bold text-teal-700 bg-white px-2 py-0.5 rounded border border-teal-200 shadow-sm">출력</span>
+<p class="text-center break-words leading-tight">개선 우선순위 표</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 bg-white border-b border-gray-200 p-4 items-center table-row-hover shadow-sm rounded-b-xl flex-1">
+<div class="col-span-2 flex flex-col items-center justify-center text-gray-600">
+<div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-xl mb-1">
+<i class="fa-solid fa-magnifying-glass-location"></i>
+</div>
+<p class="text-xs font-bold">경쟁사 조사</p>
+</div>
+<div class="col-span-3 bg-red-50 rounded-lg p-4 flex items-center justify-center h-full">
+<p class="text-red-800 font-medium text-center text-sm">"경쟁사 조사해줘"</p>
+</div>
+<div class="col-span-7 bg-teal-50 rounded-lg p-3 h-full relative border border-teal-100 flex items-center">
+<div class="flex items-center gap-2 text-xs w-full justify-between">
+<div class="flex flex-col items-center gap-1 flex-1">
+<span class="font-bold text-teal-700 bg-white px-2 py-0.5 rounded border border-teal-200 shadow-sm">입력</span>
+<p class="text-center break-words leading-tight">경쟁사 3곳<br>웹사이트 URL</p>
+</div>
+<i class="fa-solid fa-arrow-right text-teal-300 mx-1"></i>
+<div class="flex flex-col items-center gap-1 flex-1">
+<span class="font-bold text-teal-700 bg-white px-2 py-0.5 rounded border border-teal-200 shadow-sm">처리</span>
+<p class="text-center break-words leading-tight">가격/기능/타겟<br>비교표 작성</p>
+</div>
+<i class="fa-solid fa-arrow-right text-teal-300 mx-1"></i>
+<div class="flex flex-col items-center gap-1 flex-1">
+<span class="font-bold text-teal-700 bg-white px-2 py-0.5 rounded border border-teal-200 shadow-sm">출력</span>
+<p class="text-center break-words leading-tight">우리 서비스<br>차별점 3가지 도출</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pattern Highlight Box -->
+<div class="mt-6 pattern-box rounded-2xl p-5 flex items-center justify-between shadow-sm" style="position: relative; transform: translate(-2.10181px, -27.3235px);">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-custom text-2xl shadow-sm">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+</div>
+<div>
+<p class="text-orange-800 font-bold text-lg">실무 적용 패턴</p>
+<p class="text-orange-600 text-sm font-medium">이 형식을 실무에서 바로 써볼 수 있습니다.</p>
+</div>
+</div>
+<div class="flex items-center bg-white px-8 py-3 rounded-xl shadow-md gap-4 border border-orange-100">
+<div class="text-center">
+<p class="text-xs text-gray-400 font-bold mb-1">INPUT</p>
+<p class="text-lg font-black text-gray-800">입력</p>
+</div>
+<i class="fa-solid fa-arrow-right text-orange-300"></i>
+<div class="text-center">
+<p class="text-xs text-gray-400 font-bold mb-1">PROCESS</p>
+<p class="text-lg font-black text-teal-custom">처리</p>
+</div>
+<i class="fa-solid fa-arrow-right text-orange-300"></i>
+<div class="text-center">
+<p class="text-xs text-gray-400 font-bold mb-1">OUTPUT</p>
+<p class="text-lg font-black text-gray-800">출력</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script></body></html>

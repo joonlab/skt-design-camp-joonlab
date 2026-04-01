@@ -1,0 +1,154 @@
+<html data-theme="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>실제 업무 예시 - 교육 과정 만족도 분석</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .text-teal-custom { color: #46818E; }
+        .bg-teal-custom { background-color: #46818E; }
+        .text-orange-custom { color: #EB5A11; }
+        .bg-orange-custom { background-color: #EB5A11; }
+        .text-purple-custom { color: #8E7CC3; }
+        .bg-purple-custom { background-color: #8E7CC3; }
+
+        .list-item-hover {
+            transition: all 0.3s ease;
+        }
+        .list-item-hover:hover {
+            transform: translateX(10px);
+            background-color: #F8FAFC;
+            border-left-color: #EB5A11;
+        }
+
+        .number-box {
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body class="relative bg-white">
+<div class="w-full h-full flex flex-col p-12 box-border relative">
+<!-- Logo Watermark -->
+<div class="absolute top-6 right-10 z-20">
+<img alt="Logo" class="h-14 w-auto opacity-80" src="https://page.gensparksite.com/slides_images/a3cb0105676f7953f01b66cd6b7a1712.png">
+</div>
+<!-- Background Elements -->
+<div class="absolute bottom-10 left-10 w-64 h-64 bg-teal-50 rounded-full blur-3xl opacity-50 -z-10"></div>
+<!-- Header -->
+<div class="mb-8 z-10">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-1 bg-orange-custom"></div>
+<span class="text-orange-custom font-bold tracking-widest text-sm uppercase">PRACTICAL EXAMPLE</span>
+</div>
+<h2 class="text-5xl font-black text-teal-custom">실제 업무 예시: 교육 과정 만족도 분석</h2>
+<p class="text-gray-500 mt-2 text-lg font-medium">친숙한 업무를 4단계로 분해하는 시연</p>
+</div>
+<!-- Content Area -->
+<div class="flex flex-1 gap-12 relative z-10 h-full">
+<!-- Left Side: Context & Image -->
+<div class="w-1/3 flex flex-col justify-between py-4">
+<div class="bg-gray-50 p-8 rounded-3xl border border-teal-100 shadow-sm relative overflow-hidden h-full flex flex-col justify-center">
+<div class="absolute top-0 right-0 w-32 h-32 bg-teal-100 rounded-bl-full opacity-50 -mr-8 -mt-8"></div>
+<div class="relative z-10 mb-8">
+<span class="bg-white border border-teal-100 text-teal-custom px-3 py-1 rounded-full text-xs font-bold mb-4 inline-block shadow-sm">CASE STUDY</span>
+<h3 class="text-3xl font-bold text-gray-800 leading-snug mb-4">
+                            설문조사 결과를<br>
+<span class="text-orange-custom">보고서로 만들기</span>
+</h3>
+<p class="text-gray-600 text-lg leading-relaxed mb-8">
+                            매번 반복되는 설문 분석,<br>
+                            AI에게 맡기기 위해<br>
+<span class="font-bold text-teal-custom">작업을 분해</span>해봅시다.
+                        </p>
+<div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-start gap-4">
+<div class="w-10 h-10 bg-teal-50 rounded-full flex items-center justify-center text-teal-custom flex-shrink-0">
+<i class="fa-solid fa-lightbulb"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-800 mb-1">핵심 포인트</p>
+<p class="text-sm text-gray-500 leading-snug">
+                                    데이터 처리와 판단을<br>
+                                    명확히 구분하는 것이<br>
+<span class="text-orange-custom font-bold">성공의 열쇠</span>입니다.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Numbered List -->
+<div class="w-2/3 flex flex-col justify-center gap-4 py-2">
+<!-- Item 1: Input -->
+<div class="flex items-center p-5 rounded-2xl border-l-4 border-teal-custom bg-white shadow-sm list-item-hover group">
+<div class="mr-5 flex-shrink-0">
+<div class="w-14 h-14 rounded-xl bg-teal-50 flex items-center justify-center text-teal-custom text-2xl group-hover:bg-teal-custom group-hover:text-white transition-colors">
+<i class="fa-solid fa-file-import"></i>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="text-xl font-bold text-gray-800">📥 입력 (Input)</h4>
+<span class="text-teal-custom font-black text-2xl number-box">01</span>
+</div>
+<p class="text-lg text-gray-600 font-medium">설문 응답(엑셀), 주관식 답변 텍스트</p>
+</div>
+</div>
+<!-- Item 2: Process -->
+<div class="flex items-center p-5 rounded-2xl border-l-4 border-orange-custom bg-white shadow-sm list-item-hover group">
+<div class="mr-5 flex-shrink-0">
+<div class="w-14 h-14 rounded-xl bg-orange-50 flex items-center justify-center text-orange-custom text-2xl group-hover:bg-orange-custom group-hover:text-white transition-colors">
+<i class="fa-solid fa-gears"></i>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="text-xl font-bold text-gray-800">⚙️ 처리 (Process)</h4>
+<span class="text-orange-custom font-black text-2xl number-box">02</span>
+</div>
+<p class="text-lg text-gray-600 font-medium">데이터 정리, 통계 계산, 주관식 분류, 키워드 추출, 요약 작성</p>
+</div>
+</div>
+<!-- Item 3: Judgment -->
+<div class="flex items-center p-5 rounded-2xl border-l-4 border-purple-custom bg-white shadow-sm list-item-hover group">
+<div class="mr-5 flex-shrink-0">
+<div class="w-14 h-14 rounded-xl bg-purple-50 flex items-center justify-center text-purple-custom text-2xl group-hover:bg-purple-custom group-hover:text-white transition-colors">
+<i class="fa-solid fa-brain"></i>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="text-xl font-bold text-gray-800">🧠 판단 (Judgment)</h4>
+<span class="text-purple-custom font-black text-2xl number-box">03</span>
+</div>
+<p class="text-lg text-gray-600 font-medium">개선점 우선순위 결정, 다음 액션 판단</p>
+</div>
+</div>
+<!-- Item 4: Output -->
+<div class="flex items-center p-5 rounded-2xl border-l-4 border-gray-400 bg-white shadow-sm list-item-hover group">
+<div class="mr-5 flex-shrink-0">
+<div class="w-14 h-14 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 text-2xl group-hover:bg-gray-600 group-hover:text-white transition-colors">
+<i class="fa-solid fa-file-export"></i>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="text-xl font-bold text-gray-800">📤 출력 (Output)</h4>
+<span class="text-gray-400 font-black text-2xl number-box">04</span>
+</div>
+<p class="text-lg text-gray-600 font-medium">분석 보고서, 개선 제안서</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script></body></html>

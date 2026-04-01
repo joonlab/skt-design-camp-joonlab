@@ -1,0 +1,149 @@
+<html data-theme="light" lang="ko" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>오늘의 목표 & Ground Rule</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .text-teal-custom { color: #46818E; }
+        .bg-teal-custom { background-color: #46818E; }
+        .text-orange-custom { color: #EB5A11; }
+        .bg-orange-custom { background-color: #EB5A11; }
+        .text-purple-custom { color: #8E7CC3; }
+        .bg-purple-custom { background-color: #8E7CC3; }
+</style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+</style></head>
+<body class="relative" style="">
+<div class="relative w-full h-full flex flex-col p-12 box-border">
+<!-- Logo Watermark -->
+<div class="absolute top-6 right-10 z-20">
+<img alt="Logo" class="h-16 w-auto opacity-80" src="https://page.gensparksite.com/slides_images/a3cb0105676f7953f01b66cd6b7a1712.png">
+</div>
+<!-- Background Decorations -->
+<div class="absolute top-0 left-0 w-64 h-64 bg-teal-50 rounded-br-full -z-10 opacity-60"></div>
+<div class="absolute bottom-0 right-0 w-80 h-80 bg-orange-50 rounded-tl-full -z-10 opacity-40"></div>
+<!-- Header -->
+<div class="mb-6 z-10">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-1 bg-orange-custom"></div>
+<span class="text-orange-custom font-bold tracking-widest text-sm uppercase">TODAY'S GOAL</span>
+</div>
+<h2 class="text-4xl font-black text-gray-800">오늘의 목표 & Ground Rule</h2>
+<p class="text-lg text-gray-500 mt-1 font-medium">작은 성공을 반복하고, 가능성에 집중합시다</p>
+</div>
+<!-- Main Content: Two Columns -->
+<div class="grid grid-cols-2 gap-8 flex-1 z-10" style="margin-bottom: 16px;">
+<!-- Left Column: 오늘의 목표 -->
+<div class="bg-white rounded-2xl shadow-lg border-l-8 border-teal-custom p-6 flex flex-col">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-teal-custom text-xl">
+<i class="fa-solid fa-bullseye"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">오늘의 목표</h3>
+</div>
+<p class="text-sm font-bold text-teal-custom mb-4 bg-teal-50 rounded-lg p-3">IT 도움 없이 바로 해볼 수 있는 영역을 함께 찾는 것</p>
+<!-- 3 Steps -->
+<div class="flex items-center justify-center gap-2 mb-4">
+<div class="bg-teal-custom text-white text-xs font-bold px-3 py-2 rounded-lg text-center">작게<br>만들어</div>
+<i class="fa-solid fa-arrow-right text-gray-300"></i>
+<div class="bg-teal-custom text-white text-xs font-bold px-3 py-2 rounded-lg text-center">빠르게<br>검증</div>
+<i class="fa-solid fa-arrow-right text-gray-300"></i>
+<div class="bg-orange-custom text-white text-xs font-bold px-3 py-2 rounded-lg text-center">확신을<br>쌓기</div>
+</div>
+<!-- Examples -->
+<div class="bg-gray-50 rounded-lg p-3 mt-auto">
+<p class="text-xs text-gray-500 font-bold mb-2"><i class="fa-solid fa-flask text-teal-custom mr-1"></i>직접 테스트 가능 예시</p>
+<div class="grid grid-cols-2 gap-2">
+<div class="text-xs text-gray-600 bg-white rounded px-2 py-1 text-center border border-gray-100">메일 요약</div>
+<div class="text-xs text-gray-600 bg-white rounded px-2 py-1 text-center border border-gray-100">보고서 초안</div>
+<div class="text-xs text-gray-600 bg-white rounded px-2 py-1 text-center border border-gray-100">데이터 정리/분류</div>
+<div class="text-xs text-gray-600 bg-white rounded px-2 py-1 text-center border border-gray-100">키워드 추출</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Ground Rule -->
+<div class="bg-white rounded-2xl shadow-lg border-l-8 border-orange-custom p-6 flex flex-col">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-orange-custom text-xl">
+<i class="fa-solid fa-scale-balanced"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">Ground Rule</h3>
+</div>
+<p class="text-sm font-bold text-orange-custom mb-4 bg-orange-50 rounded-lg p-3">"한계를 생각하지 말고, 일단 최대한 쪼개보자"</p>
+<!-- STOP -->
+<div class="mb-3">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-gray-200 text-gray-600 text-xs font-black px-3 py-1 rounded-full">STOP</span>
+<span class="text-sm text-gray-500 font-medium">잠시 내려놓기</span>
+</div>
+<div class="flex gap-2 ml-2">
+<span class="text-xs text-gray-500 bg-gray-50 rounded px-2 py-1">기술적 한계</span>
+<span class="text-xs text-gray-500 bg-gray-50 rounded px-2 py-1">보안 이슈</span>
+<span class="text-xs text-gray-500 bg-gray-50 rounded px-2 py-1">시스템 제약</span>
+<span class="text-xs text-gray-400 ml-1">&rarr; 나중에</span>
+</div>
+</div>
+<!-- FOCUS -->
+<div class="mt-auto">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-orange-custom text-white text-xs font-black px-3 py-1 rounded-full">FOCUS</span>
+<span class="text-sm text-gray-500 font-medium">오늘 집중</span>
+</div>
+<div class="space-y-1 ml-2">
+<div class="flex items-center gap-2 text-sm text-gray-700"><span class="text-orange-custom font-bold">1</span> 업무 워크플로우를 최대한 쪼개기</div>
+<div class="flex items-center gap-2 text-sm text-gray-700"><span class="text-orange-custom font-bold">2</span> 병목 지점 인지</div>
+<div class="flex items-center gap-2 text-sm text-gray-700"><span class="text-orange-custom font-bold">3</span> 방향 그려보기</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Banner -->
+<div class="w-full bg-gray-800 text-white rounded-2xl p-5 shadow-xl flex items-center justify-center z-10 relative overflow-hidden">
+<div class="absolute left-0 top-0 w-2 h-full bg-orange-custom"></div>
+<div class="flex items-center gap-4 pl-4">
+<div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-orange-custom text-xl">
+<i class="fa-solid fa-lightbulb"></i>
+</div>
+<h3 class="text-xl font-bold">제약조건은 나중에 해결할 문제, 오늘은 <span class="text-orange-custom">'가능성'</span>에 집중합니다</h3>
+</div>
+</div>
+</div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script></body></html>

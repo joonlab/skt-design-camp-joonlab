@@ -1,0 +1,131 @@
+<html data-theme="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .text-teal-custom { color: #46818E; }
+        .bg-teal-custom { background-color: #46818E; }
+        .text-orange-custom { color: #EB5A11; }
+        .bg-orange-custom { background-color: #EB5A11; }
+        .text-purple-custom { color: #8E7CC3; }
+        .bg-purple-custom { background-color: #8E7CC3; }
+        .border-orange-custom { border-color: #EB5A11; }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style></head>
+<body class="relative">
+<div class="relative w-full h-full flex flex-col justify-center items-center overflow-hidden">
+<!-- Logo Watermark -->
+<div class="absolute top-6 right-10 z-20">
+<img alt="Logo" class="h-16 w-auto opacity-100" src="https://page.gensparksite.com/slides_images/a3cb0105676f7953f01b66cd6b7a1712.png">
+</div>
+<!-- Decorative Background Elements -->
+<div class="absolute top-0 left-0 w-80 h-80 bg-teal-50 rounded-br-full opacity-60 -z-10"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] border border-gray-100 rounded-[50px] -z-10"></div>
+<!-- Main Content Wrapper -->
+<div class="flex flex-row w-full max-w-6xl px-16 items-center justify-between">
+<!-- Left Side: Text Content -->
+<div class="w-3/5 pr-8 space-y-8 animate-fade-in-up">
+<!-- Badge -->
+<div class="inline-block px-5 py-2 bg-orange-50 rounded-full border border-orange-100">
+<p class="text-orange-custom font-bold tracking-wider text-sm uppercase flex items-center gap-2">
+<i class="fa-solid fa-graduation-cap"></i>SKT Design Camp
+                    </p>
+</div>
+<!-- Main Title -->
+<div class="space-y-2">
+<h1 class="text-5xl font-black text-teal-custom leading-tight tracking-tight">
+                        AI와 협업하기 위한<br>
+<span class="text-gray-800">업무 구조화와 데이터 준비</span>
+</h1>
+</div>
+<!-- Subtitle Section -->
+<div class="flex items-start border-l-4 border-orange-custom pl-6 py-1">
+<div class="flex flex-col">
+<p class="text-2xl text-gray-800 font-bold mb-1">SKT Design Camp 미니 강의</p>
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-sm">
+<i class="fa-solid fa-user"></i>
+</span>
+<p class="text-xl text-gray-500 font-medium">강사: 박준</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Visual Illustration -->
+<div class="w-2/5 flex justify-center items-center relative">
+<!-- Abstract Graphic Background -->
+<div class="absolute w-64 h-64 bg-teal-100 opacity-30 rounded-full blur-3xl bottom-0 left-0"></div>
+<!-- Main Icon Composition -->
+<div class="relative z-10">
+<div class="bg-white p-10 rounded-3xl shadow-2xl border border-gray-50 transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out">
+<div class="text-teal-custom text-9xl filter drop-shadow-md flex flex-col items-center gap-4">
+<i class="fa-solid fa-sitemap"></i>
+</div>
+</div>
+<!-- Floating Badge 1 -->
+<div class="absolute -top-8 -right-8 bg-orange-custom text-white w-24 h-24 rounded-2xl shadow-xl flex items-center justify-center text-4xl transform -rotate-6 border-4 border-white">
+<i class="fa-solid fa-database"></i>
+</div>
+<!-- Floating Badge 2 -->
+<div class="absolute -bottom-6 -left-6 bg-purple-custom text-white w-20 h-20 rounded-full shadow-xl flex items-center justify-center text-3xl border-4 border-white">
+<i class="fa-solid fa-robot"></i>
+</div>
+<!-- Decorative Dots -->
+<div class="absolute top-1/2 -right-16 grid grid-cols-3 gap-2 opacity-50">
+<div class="w-2 h-2 rounded-full bg-teal-custom"></div>
+<div class="w-2 h-2 rounded-full bg-teal-custom"></div>
+<div class="w-2 h-2 rounded-full bg-teal-custom"></div>
+<div class="w-2 h-2 rounded-full bg-teal-custom"></div>
+<div class="w-2 h-2 rounded-full bg-teal-custom"></div>
+<div class="w-2 h-2 rounded-full bg-teal-custom"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script></body></html>

@@ -1,0 +1,165 @@
+<html data-theme="light" lang="ko" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .text-teal-custom { color: #46818E; }
+        .bg-teal-custom { background-color: #46818E; }
+        .border-teal-custom { border-color: #46818E; }
+
+        .text-orange-custom { color: #EB5A11; }
+        .bg-orange-custom { background-color: #EB5A11; }
+        .border-orange-custom { border-color: #EB5A11; }
+
+        .text-purple-custom { color: #8E7CC3; }
+        .bg-purple-custom { background-color: #8E7CC3; }
+
+        .card-shadow {
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .row-card {
+            transition: all 0.2s ease;
+        }
+        .row-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Checkmark Animation Pulse */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 2s infinite;
+        }
+    </style>
+</head>
+<body class="relative" style="">
+<div class="relative w-full h-full flex flex-col p-12 box-border">
+<!-- Logo Watermark -->
+<div class="absolute top-6 right-10 z-20">
+<img alt="Logo" class="h-16 w-auto opacity-80" src="https://page.gensparksite.com/slides_images/a3cb0105676f7953f01b66cd6b7a1712.png">
+</div>
+<!-- Background Elements -->
+
+<div class="absolute bottom-10 left-10 w-32 h-32 bg-teal-50 rounded-full blur-2xl opacity-60 -z-10"></div>
+<!-- Header -->
+<div class="flex flex-col mb-6 z-10">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-1 bg-orange-custom"></div>
+<span class="text-orange-custom font-bold tracking-widest text-sm uppercase">AI APPLICABILITY</span>
+</div>
+<h2 class="text-4xl font-black text-teal-custom">이 업무에서 AI가 도울 수 있는 곳은?</h2>
+</div>
+<!-- Main Content: Table Checklist -->
+<div class="flex flex-col flex-1 z-10 gap-4">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-6 py-2 text-sm font-bold text-gray-500 uppercase tracking-wider">
+<div class="col-span-2">단계 (Stage)</div>
+<div class="col-span-5">주요 과업 (Task)</div>
+<div class="col-span-3 text-center">AI 적용 여부</div>
+<div class="col-span-2 text-center">담당 주체</div>
+</div>
+<!-- Row 1: Input -->
+<div class="grid grid-cols-12 gap-4 bg-white rounded-xl border border-gray-200 p-4 items-center row-card opacity-80">
+<div class="col-span-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500">
+<i class="fa-solid fa-file-import"></i>
+</div>
+<p class="font-bold text-gray-700">입력</p>
+</div>
+<div class="col-span-5">
+<p class="text-gray-600 text-sm">설문 데이터 수집, 인터뷰 내용 정리</p>
+</div>
+<div class="col-span-3 flex justify-center items-center gap-2">
+<i class="fa-solid fa-triangle-exclamation text-orange-300 text-lg"></i>
+<span class="text-xs font-bold text-gray-400">적용 어려움</span>
+</div>
+<div class="col-span-2 flex justify-center">
+<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs font-bold">Human</span>
+</div>
+</div>
+<!-- Row 2: Process (Highlight) -->
+<div class="grid grid-cols-12 gap-4 bg-teal-50 rounded-xl border-2 border-teal-custom p-5 items-center row-card shadow-md relative overflow-hidden">
+<!-- Highlight Badge -->
+
+<div class="col-span-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-teal-custom shadow-sm">
+<i class="fa-solid fa-gears"></i>
+</div>
+<p class="font-bold text-teal-800 text-lg">처리</p>
+</div>
+<div class="col-span-5">
+<p class="text-gray-700 font-medium">데이터 정리, 통계 계산, 분류, 요약</p>
+<div class="flex gap-2 mt-2">
+<span class="text-xs bg-white px-2 py-0.5 rounded text-teal-600 border border-teal-100">#반복작업</span>
+<span class="text-xs bg-white px-2 py-0.5 rounded text-teal-600 border border-teal-100">#대량처리</span>
+</div>
+</div>
+<div class="col-span-3 flex justify-center items-center gap-2 bg-white rounded-lg py-2 mx-2 border border-teal-100">
+<i class="fa-solid fa-circle-check text-teal-custom text-xl animate-pulse-soft"></i>
+<span class="text-sm font-bold text-teal-custom">AI가 매우 잘함</span>
+</div>
+<div class="col-span-2 flex justify-center">
+<span class="bg-teal-custom text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-sm">AI Agent</span>
+</div>
+</div>
+<!-- Row 3: Judgment -->
+<div class="grid grid-cols-12 gap-4 bg-white rounded-xl border border-gray-200 p-4 items-center row-card">
+<div class="col-span-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-orange-custom">
+<i class="fa-solid fa-scale-balanced"></i>
+</div>
+<p class="font-bold text-gray-700">판단</p>
+</div>
+<div class="col-span-5">
+<p class="text-gray-600 text-sm">개선점 우선순위 결정, 의사결정</p>
+</div>
+<div class="col-span-3 flex justify-center items-center gap-2">
+<i class="fa-solid fa-circle-xmark text-orange-custom text-lg"></i>
+<span class="text-xs font-bold text-orange-custom">사람이 해야 함</span>
+</div>
+<div class="col-span-2 flex justify-center">
+<span class="bg-orange-custom text-white px-3 py-1 rounded-full text-xs font-bold">Human</span>
+</div>
+</div>
+<!-- Row 4: Output -->
+<div class="grid grid-cols-12 gap-4 bg-white rounded-xl border border-gray-200 p-4 items-center row-card">
+<div class="col-span-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center text-purple-custom">
+<i class="fa-solid fa-gift"></i>
+</div>
+<p class="font-bold text-gray-700">출력</p>
+</div>
+<div class="col-span-5">
+<p class="text-gray-600 text-sm">보고서 초안 작성, 제안서 구성</p>
+</div>
+<div class="col-span-3 flex justify-center items-center gap-2">
+<i class="fa-solid fa-circle-check text-purple-custom text-lg"></i>
+<span class="text-xs font-bold text-purple-custom">AI가 도울 수 있음</span>
+</div>
+<div class="col-span-2 flex justify-center">
+<span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold">Co-pilot</span>
+</div>
+</div>
+</div>
+<!-- Bottom Highlight Section -->
+<div class="mt-6 w-full flex justify-end">
+
+</div>
+</div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script></body></html>

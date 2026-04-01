@@ -1,0 +1,180 @@
+<html data-theme="light" lang="ko" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>모호한 지시 → 엉뚱한 결과</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .text-teal-custom { color: #46818E; }
+        .bg-teal-custom { background-color: #46818E; }
+        .text-orange-custom { color: #EB5A11; }
+        .bg-orange-custom { background-color: #EB5A11; }
+        .text-purple-custom { color: #8E7CC3; }
+        .bg-purple-custom { background-color: #8E7CC3; }
+
+        .shadow-soft { box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05); }
+        .shadow-card { box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+
+        .chat-bubble-left {
+            position: relative;
+            background: #FFF7ED;
+            border: 1px solid #FFEDD5;
+            border-radius: 12px;
+            border-bottom-left-radius: 0;
+        }
+
+        .chat-bubble-right {
+            position: relative;
+            background: #F0FDFA;
+            border: 1px solid #CCFBF1;
+            border-radius: 12px;
+            border-bottom-right-radius: 0;
+        }
+
+        .arrow-down-icon {
+            display: flex;
+            justify-content: center;
+            margin: 8px 0;
+            color: #D1D5DB;
+        }
+    </style>
+</head>
+<body class="relative bg-white" style="">
+<div class="w-full h-full flex flex-col p-12 box-border relative">
+<!-- Logo Watermark -->
+<div class="absolute top-6 right-10 z-20">
+<img alt="Logo" class="h-14 w-auto opacity-80" src="https://page.gensparksite.com/slides_images/a3cb0105676f7953f01b66cd6b7a1712.png">
+</div>
+<!-- Header -->
+<div class="mb-6 z-10 text-center">
+<div class="flex items-center justify-center gap-3 mb-2">
+<div class="w-10 h-1 bg-orange-custom"></div>
+<span class="text-orange-custom font-bold tracking-widest text-sm uppercase">CASE STUDY</span>
+<div class="w-10 h-1 bg-orange-custom"></div>
+</div>
+<h2 class="text-5xl font-black text-gray-800">모호한 지시 → 엉뚱한 결과</h2>
+<p class="text-gray-500 mt-2 text-lg font-medium">왜 업무를 <span class="text-teal-custom font-bold">잘게 쪼개야 하는지</span> 실패 사례로 알아봅시다.</p>
+</div>
+<!-- Comparison Section (Main) -->
+<div class="flex flex-1 gap-8 relative z-10 px-4 h-full pb-6">
+<!-- Left Column: Before (Bad) -->
+<div class="w-1/2 flex flex-col card-hover h-full">
+<div class="bg-orange-50 rounded-t-2xl p-4 flex items-center gap-4 border-b border-orange-100" style="position: relative; transform: translate(-1.05278px, -16.8445px);">
+<div class="w-10 h-10 rounded-full bg-white text-orange-custom flex items-center justify-center text-xl font-bold shadow-sm border border-orange-100">
+<i class="fa-solid fa-xmark"></i>
+</div>
+<div>
+<p class="font-black text-orange-800 text-xl">Before: 모호한 지시</p>
+<p class="text-orange-600 text-xs font-medium">입력·처리·출력이 불명확함</p>
+</div>
+</div>
+<div class="flex-1 bg-white border-l border-r border-b border-orange-100 rounded-b-2xl p-6 shadow-card relative flex flex-col justify-start space-y-5" style="transform: translate(-1.05278px, -15.7917px);">
+<!-- Case 1 -->
+<div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded">사례 1</span>
+<p class="text-sm font-bold text-gray-700">"고객 불만 분석해줘"</p>
+</div>
+<div class="arrow-down-icon text-sm"><i class="fa-solid fa-arrow-down"></i></div>
+<div class="flex items-start gap-3">
+<i class="fa-solid fa-robot text-gray-400 mt-1"></i>
+<div class="flex-1">
+<p class="text-sm text-gray-600 font-medium">🤖 AI의 엉뚱한 결과:</p>
+<p class="text-xs text-gray-500 bg-white p-2 rounded border border-gray-200 mt-1">
+                                    - 긍정 점수: 20점<br>
+                                    - 부정 점수: 80점<br>
+                                    (끝)
+                                </p>
+<p class="text-xs text-red-500 mt-1 font-bold"><i class="fa-solid fa-circle-exclamation mr-1"></i>원했던 '개선 액션' 누락</p>
+</div>
+</div>
+</div>
+<!-- Case 2 -->
+<div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded">사례 2</span>
+<p class="text-sm font-bold text-gray-700">"이번 달 보고서 만들어줘"</p>
+</div>
+<div class="arrow-down-icon text-sm"><i class="fa-solid fa-arrow-down"></i></div>
+<div class="flex items-start gap-3">
+<i class="fa-solid fa-robot text-gray-400 mt-1"></i>
+<div class="flex-1">
+<p class="text-sm text-gray-600 font-medium">🤖 AI의 엉뚱한 결과:</p>
+<p class="text-xs text-gray-500 bg-white p-2 rounded border border-gray-200 mt-1">
+                                    - 매출: 10억<br>
+                                    - 영업이익: 2억<br>
+                                    (숫자만 나열)
+                                </p>
+<p class="text-xs text-red-500 mt-1 font-bold"><i class="fa-solid fa-circle-exclamation mr-1"></i>원인 분석 및 제안 없음</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: After (Good) -->
+<div class="w-1/2 flex flex-col card-hover h-full">
+<div class="bg-teal-50 rounded-t-2xl p-4 flex items-center gap-4 border-b border-teal-100" style="position: relative; transform: translate(0px, -15.7917px);">
+<div class="w-10 h-10 rounded-full bg-teal-custom text-white flex items-center justify-center text-xl font-bold shadow-sm">
+<i class="fa-solid fa-check"></i>
+</div>
+<div>
+<p class="font-black text-teal-800 text-xl">After: 쪼갠 지시</p>
+<p class="text-teal-600 text-xs font-medium">입력→처리→출력 3단계 구조화</p>
+</div>
+</div>
+<div class="flex-1 bg-white border-l border-r border-b border-teal-100 rounded-b-2xl p-6 shadow-card relative flex flex-col justify-center" style="transform: translate(-2.10556px, -15.7917px);">
+<div class="bg-teal-50/50 p-5 rounded-xl border border-teal-100 relative mb-4">
+<p class="text-sm font-bold text-gray-700 mb-4 text-center">"고객 불만 분석, 이렇게 시켜보세요"</p>
+<!-- Process Flow -->
+<div class="space-y-3">
+<div class="flex items-center bg-white p-3 rounded-lg border border-teal-100 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 text-xs font-bold mr-3">IN</div>
+<p class="text-sm text-gray-800">고객 불만 접수 데이터 <span class="text-xs text-gray-400">(엑셀/텍스트)</span></p>
+</div>
+<div class="flex justify-center -my-2 text-teal-300 text-xs"><i class="fa-solid fa-arrow-down"></i></div>
+<div class="flex items-center bg-white p-3 rounded-lg border border-teal-100 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-custom text-xs font-bold mr-3">DO</div>
+<p class="text-sm text-gray-800">불만 유형별 분류 + 빈도 집계</p>
+</div>
+<div class="flex justify-center -my-2 text-teal-300 text-xs"><i class="fa-solid fa-arrow-down"></i></div>
+<div class="flex items-center bg-white p-3 rounded-lg border border-teal-100 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-custom text-xs font-bold mr-3">OUT</div>
+<p class="text-sm text-gray-800">상위 3개 불만의 <span class="font-bold text-teal-custom">개선안 초안</span></p>
+</div>
+</div>
+</div>
+<!-- Result -->
+<div class="bg-green-50 p-4 rounded-xl border border-green-100 flex items-center gap-3">
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-green-500 shadow-sm">
+<i class="fa-regular fa-face-smile"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-green-800">원하는 결과 도출 성공!</p>
+<p class="text-xs text-green-600">구체적인 실행 액션 아이템 확보</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Message -->
+<div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 w-auto">
+
+</div>
+</div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script></body></html>
