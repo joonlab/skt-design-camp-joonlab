@@ -30,7 +30,6 @@
             border-top: 4px solid;
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
         .flow-step {
             display: inline-flex;
@@ -90,7 +89,7 @@
 </div>
 </div>
 <!-- 6 Cards Grid: 2 cols x 3 rows -->
-<div class="grid grid-cols-3 gap-4 flex-1 z-10" style="grid-template-rows: repeat(2, 1fr);">
+<div class="grid grid-cols-3 gap-4 z-10" style="grid-template-rows: auto auto;">
 <!-- Card 1: LLM 직접 활용 -->
 <div class="card" style="border-top-color: #46818E;">
 <div class="flex items-center justify-between mb-2">
@@ -107,7 +106,7 @@
 <span class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></span>
 <span class="flow-step"><i class="fa-solid fa-file-lines text-teal-custom"></i> 텍스트 결과</span>
 </div>
-<div class="mt-auto bg-teal-50 rounded-lg p-2">
+<div class="mt-2 bg-teal-50 rounded-lg p-2">
 <p class="text-xs text-gray-600"><span class="mr-1">💬</span>"회의록에서 결정사항과 Action Item을 표로 정리해줘"</p>
 </div>
 </div>
@@ -127,7 +126,7 @@
 <span class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></span>
 <span class="flow-step"><i class="fa-solid fa-quote-right text-teal-custom"></i> 근거 기반 답변</span>
 </div>
-<div class="mt-auto bg-teal-50 rounded-lg p-2">
+<div class="mt-2 bg-teal-50 rounded-lg p-2">
 <p class="text-xs text-gray-600"><span class="mr-1">💬</span>"사내 규정에서 해외출장 숙박비 상한은 얼마야?"</p>
 </div>
 </div>
@@ -147,7 +146,7 @@
 <span class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></span>
 <span class="flow-step"><i class="fa-solid fa-chart-pie text-teal-custom"></i> 차트/요약</span>
 </div>
-<div class="mt-auto bg-teal-50 rounded-lg p-2">
+<div class="mt-2 bg-teal-50 rounded-lg p-2">
 <p class="text-xs text-gray-600"><span class="mr-1">💬</span>"매출 데이터에서 분기별 트렌드와 이상치 분석해줘"</p>
 </div>
 </div>
@@ -167,7 +166,7 @@
 <span class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></span>
 <span class="flow-step"><i class="fa-solid fa-play text-orange-custom"></i> 자동 실행</span>
 </div>
-<div class="mt-auto bg-orange-50 rounded-lg p-2">
+<div class="mt-2 bg-orange-50 rounded-lg p-2">
 <p class="text-xs text-gray-600"><span class="mr-1">💬</span>"견적 5천만원 이상이면 팀장에게 Slack 알림"</p>
 </div>
 </div>
@@ -187,7 +186,7 @@
 <span class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></span>
 <span class="flow-step"><i class="fa-solid fa-server text-orange-custom"></i> System B</span>
 </div>
-<div class="mt-auto bg-orange-50 rounded-lg p-2">
+<div class="mt-2 bg-orange-50 rounded-lg p-2">
 <p class="text-xs text-gray-600"><span class="mr-1">💬</span>"ERP 매출 데이터를 매일 Google Sheets에 동기화"</p>
 </div>
 </div>
@@ -209,7 +208,7 @@
 <span class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></span>
 <span class="flow-step"><i class="fa-solid fa-envelope text-purple-custom"></i> 발송</span>
 </div>
-<div class="mt-auto bg-purple-50 rounded-lg p-2">
+<div class="mt-2 bg-purple-50 rounded-lg p-2">
 <p class="text-xs text-gray-600"><span class="mr-1">💬</span>"뉴스 수집 → AI 분류 → 요약 → 메일 자동 발송"</p>
 </div>
 </div>
