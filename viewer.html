@@ -308,6 +308,31 @@
     filter: brightness(0) invert(1);
   }
   .skt-logo.idle-hidden { opacity: 0; pointer-events: none; }
+
+  /* ── Fullscreen Mode ── */
+  body.is-fullscreen {
+    background: #000 !important;
+  }
+  body.is-fullscreen .sidebar { display: none !important; }
+  body.is-fullscreen .toggle-btn { display: none !important; }
+  body.is-fullscreen .skt-logo { display: none !important; }
+  body.is-fullscreen .fullscreen-btn { display: none !important; }
+  body.is-fullscreen .slide-area {
+    margin-left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+  body.is-fullscreen .page-indicator {
+    bottom: 12px;
+    font-size: 12px;
+    padding: 4px 14px;
+    opacity: 0.6;
+  }
+
+  /* Fullscreen pseudo-class (browser native) */
+  :fullscreen { background: #000; }
+  :-webkit-full-screen { background: #000; }
+  :-moz-full-screen { background: #000; }
 </style>
 </head>
 <body>
@@ -540,14 +565,27 @@
     if (isFullscreen()) {
       exitFS();
     } else {
-      // Try body first, then documentElement
-      const result = requestFS(document.body);
+      // Try documentElement first (most reliable for true fullscreen)
+      const result = requestFS(document.documentElement);
       if (result && result.catch) {
         result.catch(function() {
-          requestFS(document.documentElement).catch(function(){});
+          requestFS(document.body).catch(function(){});
         });
       }
     }
+  }
+
+  function onFullscreenChange() {
+    const fs = isFullscreen();
+    document.body.classList.toggle('is-fullscreen', fs);
+    // In fullscreen: collapse sidebar and rescale
+    if (fs) {
+      sidebarOpen = false;
+      sidebar.classList.add('collapsed');
+    }
+    // Small delay to let browser settle into fullscreen dimensions
+    setTimeout(scaleSlides, 100);
+    setTimeout(scaleSlides, 300);
   }
 
   fullscreenBtn.addEventListener('click', function(e) {
@@ -562,20 +600,21 @@
     toggleFullscreen();
   });
 
-  document.addEventListener('fullscreenchange', scaleSlides);
-  document.addEventListener('webkitfullscreenchange', scaleSlides);
-  document.addEventListener('mozfullscreenchange', scaleSlides);
+  document.addEventListener('fullscreenchange', onFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+  document.addEventListener('mozfullscreenchange', onFullscreenChange);
 
   // ── Scale Slides to Fit ──
   function scaleSlides() {
-    const sidebarW = sidebarOpen && !sidebar.classList.contains('collapsed') ? 260 : 0;
-    const areaW = window.innerWidth - sidebarW;
-    const areaH = window.innerHeight;
-    const padX = 40;
-    const padY = 40;
+    const fs = isFullscreen();
+    const sidebarW = (!fs && sidebarOpen && !sidebar.classList.contains('collapsed')) ? 260 : 0;
+    const areaW = (fs ? screen.width : window.innerWidth) - sidebarW;
+    const areaH = fs ? screen.height : window.innerHeight;
+    const padX = fs ? 0 : 40;
+    const padY = fs ? 0 : 40;
     const scaleX = (areaW - padX) / 1280;
     const scaleY = (areaH - padY) / 720;
-    const scale = Math.min(scaleX, scaleY, 1.5);
+    const scale = Math.min(scaleX, scaleY);
     slideContainer.style.transform = `scale(${scale})`;
     slideContainer.style.width = '1280px';
     slideContainer.style.height = '720px';
